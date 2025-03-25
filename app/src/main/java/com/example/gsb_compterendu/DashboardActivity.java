@@ -60,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
         API_URL = "https://maxence-philippon.fr/assets/api/crvisiteur.php?id_utilisateur=" + id_utilisateur;
 
         ficheList = new ArrayList<>();
-        ficheAdapter = new FicheAdapter(ficheList);
+        ficheAdapter = new FicheAdapter(this, ficheList);
         recyclerView.setAdapter(ficheAdapter);
 
         // Récupérer les fiches
