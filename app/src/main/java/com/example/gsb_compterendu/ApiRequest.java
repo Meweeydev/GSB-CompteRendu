@@ -3,26 +3,24 @@ package com.example.gsb_compterendu;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONObject;
 
 public class ApiRequest extends AsyncTask<String, Void, String> {
 
-    private static final String API_URL = "https://maxence-philippon.fr/assets/api/api_connexion.php";  // Remplace avec l'URL de ton API
+    private static final String API_URL = "https://maxence-philippon.fr/assets/api/api_connexion.php";
 
     private String email;
     private String password;
     private LoginCallback callback;
 
     public interface LoginCallback {
-        void onSuccess(String token);
+        void onSuccess(String token, String nom, String prenom, String email, String role, String region, int idUtilisateur);
         void onError(String message);
     }
 
@@ -52,8 +50,8 @@ public class ApiRequest extends AsyncTask<String, Void, String> {
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) { // 200
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String inputLine;
                 StringBuilder response = new StringBuilder();
+                String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
                 }
@@ -75,7 +73,15 @@ public class ApiRequest extends AsyncTask<String, Void, String> {
                 JSONObject jsonResponse = new JSONObject(result);
                 if (jsonResponse.has("token")) {
                     String token = jsonResponse.getString("token");
-                    callback.onSuccess(token);
+                    String nom = jsonResponse.optString("nom", "");
+                    String prenom = jsonResponse.optString("prenom", "");
+                    String email = jsonResponse.optString("email", "");
+                    String role = jsonResponse.optString("role", "");
+                    String region = jsonResponse.optString("region", "");
+                    int id_utilisateur = jsonResponse.optInt("id_utilisateur", -1);
+                    Log.d("DEBUG", "id_utilisateur extrait: " + id_utilisateur);
+
+                    callback.onSuccess(token, nom, prenom, email, role, region, id_utilisateur);
                 } else {
                     callback.onError("Authentification échouée !");
                 }
