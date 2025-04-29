@@ -2,9 +2,9 @@
 
 ## Identifiants de connexion
 
-- Visiteur : **maxence.visiteur@maxence-philippon.com**
-- Délégué : **maxence.delegue@maxence-philippon.com**
-- Responsable : **maxence.responsable@maxence-philippon.com**
+- Visiteur : **jean.dupont@gsb.fr**
+- Délégué : **martin.luc@gsb.fr**
+- Responsable : **marie.durand@gsb.fr**
 - 
 ## Mot de passe
 Pour tout les comptes le mot de passe est : 1234
