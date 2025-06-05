@@ -1,19 +1,90 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFD700"
+    android:padding="20dp">
 
-    android:padding="16dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visualiser le compte "
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp" />
 
-    <TextView
-        android:id="@+id/ficheDetailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Détails de la fiche ici" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de visite" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="196dp"
-        android:layout_height="96dp"
-        android:text="TextView" />
-</FrameLayout>
+        <EditText
+            android:id="@+id/viewDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Praticien" />
+
+        <TextView
+            android:id="@+id/viewPraticien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Commentaire" />
+
+        <EditText
+            android:id="@+id/viewCommentaire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="3"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:enabled="false"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statut" />
+
+        <TextView
+            android:id="@+id/viewStatut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Produits promus" />
+
+        <LinearLayout
+            android:id="@+id/viewProduitsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnFermerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#b3b3b3"
+            android:text="Fermer" />
+    </LinearLayout>
+</ScrollView>

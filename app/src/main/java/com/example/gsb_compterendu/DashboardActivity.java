@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,6 +48,13 @@ public class DashboardActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.logoutButton);
         recyclerView = findViewById(R.id.fichesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        getSupportFragmentManager().setFragmentResultListener("refreshRequest", this, (requestKey, bundle) -> {
+            boolean shouldRefresh = bundle.getBoolean("refresh", false);
+            if (shouldRefresh) {
+                ficheList.clear(); // Nettoyer ancienne liste
+                fetchFiches();     // Recharger via API
+            }
+        });
 
         Intent intent = getIntent();
         nom = intent.getStringExtra("nom");
@@ -54,7 +62,7 @@ public class DashboardActivity extends AppCompatActivity {
         int id_utilisateur = intent.getIntExtra("id_utilisateur", -1);
 
         // Afficher le message de bienvenue
-        welcomeText.setText("Bienvenue, " + nom + " " + prenom + " " + id_utilisateur + " !");
+        welcomeText.setText("Bonjour " + nom + " " + prenom +" !");
 
         // Configurer l'URL de l'API avec l'ID de l'utilisateur
         API_URL = "https://maxence-philippon.fr/assets/api/crvisiteur.php?id_utilisateur=" + id_utilisateur;
@@ -75,6 +83,23 @@ public class DashboardActivity extends AppCompatActivity {
                 new LogoutTask().execute(); // Exécuter la tâche en arrière-plan
             }
         });
+        FloatingActionButton fabAddFiche = findViewById(R.id.fabAddFiche);
+        fabAddFiche.setOnClickListener(v -> {
+            AjouterFicheFragment fragment = new AjouterFicheFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("id_utilisateur", String.valueOf(id_utilisateur)); // passe l'ID utilisateur ici
+            fragment.setArguments(bundle);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
+            findViewById(R.id.fragmentContainer).setVisibility(View.VISIBLE);
+            findViewById(R.id.fichesRecyclerView).setVisibility(View.GONE);
+        });
+
     }
 
     private void fetchFiches() {

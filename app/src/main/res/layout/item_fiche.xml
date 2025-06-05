@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:background="#FFF"
     android:elevation="4dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginTop="8dp"
+
+    >
 
     <TextView
         android:id="@+id/dateVisite"
@@ -34,31 +36,26 @@
 
     <!-- Boutons -->
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#33aaff"
             android:text="Visualiser" />
 
         <Button
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Modifier"
-            android:layout_marginStart="8dp" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supprimer"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="3dp"
+            android:backgroundTint="#0044cc"
+            android:text="Modifier" />
     </LinearLayout>
 
 </LinearLayout>

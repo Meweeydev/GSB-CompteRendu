@@ -59,14 +59,6 @@ public class FicheAdapter extends RecyclerView.Adapter<FicheAdapter.ViewHolder> 
             activity.findViewById(R.id.fragmentContainer).setVisibility(View.VISIBLE);
         });
 
-
-        holder.btnDelete.setOnClickListener(v -> {
-            // Ici tu peux appeler une méthode de suppression ou un AlertDialog
-            // Exemple basique :
-            ficheList.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, ficheList.size());
-        });
     }
 
 
@@ -87,7 +79,6 @@ public class FicheAdapter extends RecyclerView.Adapter<FicheAdapter.ViewHolder> 
             statut = view.findViewById(R.id.statut);
             btnEdit = view.findViewById(R.id.btnEdit);
             btnView = view.findViewById(R.id.btnView);
-            btnDelete = view.findViewById(R.id.btnDelete);
         }
     }
 

@@ -10,28 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Titre -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Modifier la fiche"
+            android:text="Ajouter un compte rendu"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
 
-        <!-- Date de création -->
+        <!-- Date de visite -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date de création" />
+            android:text="Date de visite" />
 
         <EditText
             android:id="@+id/editDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date"
+            android:hint="Choisir une date"
             android:focusable="false"
-            android:inputType="none" />
-
+            android:inputType="none"
+            android:layout_marginBottom="16dp" />
 
         <!-- Praticien -->
         <TextView
@@ -45,21 +46,18 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp" />
 
-
-        <!-- Produit -->
+        <!-- Produits promus -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Produits promus"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:text="Produits promus" />
 
         <LinearLayout
             android:id="@+id/produitsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp" />
 
         <!-- Commentaire -->
         <TextView
@@ -71,48 +69,44 @@
             android:id="@+id/editCommentaire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="bottom"
             android:hint="Écris ton commentaire"
+            android:minLines="3"
+            android:gravity="top"
             android:inputType="textMultiLine"
-            android:minLines="3" />
-
-        <!-- Statut -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Statut" />
-
-        <Spinner
-            android:id="@+id/spinnerStatut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp" />
 
-        <!-- Bouton Fermer -->
         <Button
-            android:id="@+id/btnFermer"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnChoisirFichier"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#b3b3b3"
-            android:text="Fermer" />
+            android:text="Choisir un justificatif (photo, PDF...)"
+            android:layout_marginTop="16dp" />
 
+        <TextView
+            android:id="@+id/txtNomFichier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aucun fichier sélectionné"
+            android:layout_marginTop="8dp" />
+
+
+        <!-- Boutons -->
         <Button
             android:id="@+id/btnEnregistrer"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#0296FF"
-            android:text="Enregistrer" />
+                android:backgroundTint="#0296FF"
+            android:text="Créer la fiche" />
 
         <Button
-            android:id="@+id/btnSupprimer"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnFermer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Annuler"
             android:layout_marginTop="12dp"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:text="Supprimer"
-            android:textColor="@color/white" />
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
+
 </ScrollView>

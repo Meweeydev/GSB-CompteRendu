@@ -20,7 +20,7 @@ public class ApiRequest extends AsyncTask<String, Void, String> {
     private LoginCallback callback;
 
     public interface LoginCallback {
-        void onSuccess(String token, String nom, String prenom, String email, String role, String region, int idUtilisateur);
+        void onSuccess(String nom, String prenom, String email, String role, String region, int idUtilisateur);
         void onError(String message);
     }
 
@@ -71,8 +71,7 @@ public class ApiRequest extends AsyncTask<String, Void, String> {
         if (result != null) {
             try {
                 JSONObject jsonResponse = new JSONObject(result);
-                if (jsonResponse.has("token")) {
-                    String token = jsonResponse.getString("token");
+                if (jsonResponse.has("nom")) {
                     String nom = jsonResponse.optString("nom", "");
                     String prenom = jsonResponse.optString("prenom", "");
                     String email = jsonResponse.optString("email", "");
@@ -81,7 +80,7 @@ public class ApiRequest extends AsyncTask<String, Void, String> {
                     int id_utilisateur = jsonResponse.optInt("id_utilisateur", -1);
                     Log.d("DEBUG", "id_utilisateur extrait: " + id_utilisateur);
 
-                    callback.onSuccess(token, nom, prenom, email, role, region, id_utilisateur);
+                    callback.onSuccess(nom, prenom, email, role, region, id_utilisateur);
                 } else {
                     callback.onError("Authentification échouée !");
                 }

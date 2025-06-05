@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.Email);
         passwordEditText = findViewById(R.id.Password);
         loginButton = findViewById(R.id.button);
-        responseTextView = findViewById(R.id.textView);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,10 +34,9 @@ public class MainActivity extends AppCompatActivity {
                 if (!email.isEmpty() && !password.isEmpty()) {
                     new ApiRequest(email, password, new ApiRequest.LoginCallback() {
                         @Override
-                        public void onSuccess(String token, String nom, String prenom, String email, String role, String region, int idUtilisateur) {
+                        public void onSuccess(String nom, String prenom, String email, String role, String region, int idUtilisateur) {
                             // Créer un intent pour passer à DashboardActivity
                             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                            intent.putExtra("token", token);
                             intent.putExtra("nom", nom);
                             intent.putExtra("prenom", prenom);
                             intent.putExtra("email", email);
